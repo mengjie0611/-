@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 当 Web 应用程序需要访问浏览器的高级功能时，需要向用户主动请求许可。
+    例如，当百度地图使用 Geolocation API 获取用户的地理位置时，浏览器会提
+    示用户申请权限，这是权限规范中定义明确的概念,
+    <permission>这个元素允许开发者以声明方式请求使用权限
+    <permission type="camera" />
+    “type” 属性代表你正在请求的权限列表（如果有多个可以以空格分割）。
+    目前，允许的值是 'camera'，'microphone' 以及 'camera microphone'。
+    默认情况下，这个元素呈现出来的样子类似于具有最简用户代理样式的按钮。
+
+     -->
+</head>
+<body>
+    <permission type="camera" />
+<script>
+    const permission = document.querySelector('permission');
+    permission.addEventListener('promptdismiss', showCameraWarning);
+
+    function showCameraWarning() {
+        // Show warning that the app isn't fully usable
+        // unless the camera permission is granted.
+    }
+
+    const permissionStatus = await navigator.permissions.query({name: "camera"});
+    permissionStatus.addEventListener('change', () => {
+        // Run the check when the status changes.
+        if (permissionStatus.state === "granted") {
+        useCamera();
+        }
+        // Run the initial check.
+        if (permissionStatus.state === "granted") {
+        useCamera();
+        }
+    });
+    </script>
+</body>
+</html>
