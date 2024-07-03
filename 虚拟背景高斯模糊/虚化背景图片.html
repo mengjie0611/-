@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            --pic: url("./WechatIMG22061.jpeg");
+            --x: 0;
+            --y: 0;
+        }
+        #g-container {
+            position: relative;
+            width: 350px;
+            height: 500px;
+            border-radius: 30px;
+            overflow: hidden;
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                background: var(--pic);
+                background-size: cover;
+                background-position: center;
+                border-radius: 30px;
+            }
+            
+            &::before {
+                inset: 0;
+                filter: blur(20px);
+            }
+            
+            &::after {
+                inset: 50px;
+            }
+        }
+        #g-img {
+            position: absolute;
+            inset: 0px;
+            border-radius: 30px;
+            background: conic-gradient(#03a9f4, #e91e63, #9c27b0, #ff5722, #03a9f4);
+            mask: radial-gradient(
+                circle at var(--x) var(--y),
+                #000,
+                #000,
+                transparent,
+                transparent,
+                transparent
+            );
+        }
+    </style>
+</head>
+<body>
+    <!-- <div></div> -->
+    <div class="colorful"></div>
+    
+
+    <div id="g-container">
+        <div id="g-img"></div>
+    </div>
+
+
+    <script src="./index.js"></script>
+</body>
+</html>
